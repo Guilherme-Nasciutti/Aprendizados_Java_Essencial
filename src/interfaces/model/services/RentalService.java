@@ -18,38 +18,12 @@ public class RentalService {
         this.taxService = taxService;
     }
 
-    public Double getPricePerHour() {
-        return pricePerHour;
-    }
-
-    public void setPricePerHour(Double pricePerHour) {
-        this.pricePerHour = pricePerHour;
-    }
-
-    public Double getPricePerDay() {
-        return pricePerDay;
-    }
-
-    public void setPricePerDay(Double pricePerDay) {
-        this.pricePerDay = pricePerDay;
-    }
-
-    public TaxService getTaxService() {
-        return taxService;
-    }
-
-    public void setTaxService(TaxService taxService) {
-        this.taxService = taxService;
-    }
-
     public void processInvoice(CarRental carRental) {
 
         double minutes = Duration.between(carRental.getStart(), carRental.getFinish()).toMinutes();
         double hours = minutes / 60.0;
 
-
         double basicPayments;
-
         if (hours <= 12.0) {
             basicPayments = pricePerHour * Math.ceil(hours);
         } else {
