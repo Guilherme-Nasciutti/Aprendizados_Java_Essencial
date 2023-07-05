@@ -18,29 +18,29 @@ public class Program {
 
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
-        System.out.println("Entre com os dados do aluguel:");
-        System.out.print("Modelo do carro: ");
+        System.out.println("Enter rental details");
+        System.out.print("Car model: ");
         String modelCar = scanner.nextLine();
-        System.out.print("Retirada (DD/MM/YYYY HH:MM): ");
+        System.out.print("Vehicle removal (DD/MM/YYYY HH:MM): ");
         LocalDateTime start = LocalDateTime.parse(scanner.nextLine(), dateFormat);
-        System.out.print("Retorno (DD/MM/YYYY HH:MM): ");
+        System.out.print("Vehicle return (DD/MM/YYYY HH:MM): ");
         LocalDateTime finish = LocalDateTime.parse(scanner.nextLine(), dateFormat);
 
         CarRental carRental = new CarRental(start, finish, new Vehicle(modelCar));
 
-        System.out.print("Entre com o preço por hora: ");
+        System.out.print("Enter the price per hour: ");
         double pricePerHour = scanner.nextDouble();
-        System.out.print("Entre com o preço por dia: ");
+        System.out.print("Enter the price per day: ");
         double pricePerDay = scanner.nextDouble();
 
         RentalService rentalService = new RentalService(pricePerHour, pricePerDay, new BrazilTaxService());
 
         rentalService.processInvoice(carRental);
 
-        System.out.println("Fatura: ");
-        System.out.println("Pagamento basico: " + String.format("%.2f", carRental.getInvoice().getBasicPayment()));
-        System.out.println("Imposto: " + String.format("%.2f", carRental.getInvoice().getTax()));
-        System.out.println("Pagamento total: " + String.format("%.2f", carRental.getInvoice().getTotalPayment()));
+        System.out.println("\nINVOICE: ");
+        System.out.println("Basic payment: " + String.format("%.2f", carRental.getInvoice().getBasicPayment()));
+        System.out.println("Tax: " + String.format("%.2f", carRental.getInvoice().getTax()));
+        System.out.println("Total payment: " + String.format("%.2f", carRental.getInvoice().getTotalPayment()));
 
         scanner.close();
     }
