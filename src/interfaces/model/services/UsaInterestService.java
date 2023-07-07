@@ -2,14 +2,10 @@ package interfaces.model.services;
 
 public class UsaInterestService implements InterestService {
 
-    private double interestRate;
-
-    public UsaInterestService(double interestRate) {
-        this.interestRate = interestRate;
-    }
+    private static final double INTEREST_RATE = 1.0;
 
     @Override
     public double getInterestRate() {
-        return interestRate;
+        return INTEREST_RATE;
     }
 }

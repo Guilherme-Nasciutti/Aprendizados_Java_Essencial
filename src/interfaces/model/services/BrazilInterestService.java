@@ -1,16 +1,11 @@
 package interfaces.model.services;
 
-import java.security.InvalidParameterException;
-
 public class BrazilInterestService implements InterestService {
 
-    private double interestRate;
+    private static final double INTEREST_RATE = 2.0;
 
-    public BrazilInterestService(Double interestRate) {
-        this.interestRate = interestRate;
-    }
     @Override
     public double getInterestRate() {
-        return interestRate;
+        return INTEREST_RATE;
     }
 }

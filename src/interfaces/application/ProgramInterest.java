@@ -2,6 +2,7 @@ package interfaces.application;
 
 import interfaces.model.services.BrazilInterestService;
 import interfaces.model.services.InterestService;
+import interfaces.model.services.UsaInterestService;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -17,11 +18,14 @@ public class ProgramInterest {
         System.out.print("Months: ");
         int months = sc.nextInt();
 
-        InterestService is = new BrazilInterestService(2.0);
-        double payment = is.payment(amount, months);
+        InterestService isBr = new BrazilInterestService();
+        double paymentBrazil = isBr.payment(amount, months);
+        InterestService isUsa = new UsaInterestService();
+        double paymentUsa = isUsa.payment(amount, months);
 
         System.out.println("Payment after " + months + " months: ");
-        System.out.println(String.format("%.2f", payment));
+        System.out.printf("Brazil: R$%.2f%n", paymentBrazil);
+        System.out.printf("USA: $%.2f%n", paymentUsa);
 
         sc.close();
     }
