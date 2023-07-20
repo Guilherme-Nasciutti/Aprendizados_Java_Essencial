@@ -4,7 +4,7 @@ import generics_set_map.services.PrintService;
 
 import java.util.Scanner;
 
-public class Program {
+public class ProgramPrintService {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
