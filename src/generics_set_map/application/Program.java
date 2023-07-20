@@ -9,18 +9,33 @@ public class Program {
 
         Scanner sc = new Scanner(System.in);
 
-        PrintService printService = new PrintService();
+        PrintService<Integer> printService = new PrintService<>();
 
         System.out.print("How many values? ");
         int numberValues = sc.nextInt();
 
         for (int i = 0; i < numberValues; i++) {
-          int value = sc.nextInt();
-          printService.addValue(value);
+            Integer value = sc.nextInt();
+            printService.addValue(value);
         }
 
         printService.print();
         System.out.println("\nFirst: " + printService.first());
+
+        System.out.println("----------");
+
+        PrintService<String> printServiceString = new PrintService<>();
+
+        System.out.print("How many names? ");
+        numberValues = sc.nextInt();
+
+        for (int i = 0; i < numberValues; i++) {
+            String valueString = sc.next();
+            printServiceString.addValue(valueString);
+        }
+
+        printServiceString.print();
+        System.out.println("\nFirst: " + printServiceString.first());
 
         sc.close();
     }
